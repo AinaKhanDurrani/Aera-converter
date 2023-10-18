@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./img/favicon.png">
+    <title>Area Converter</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Area Converter</h1>
+        <div class="area-converter">
+            <div class="input">
+                <input type="text" placeholder="0 sq.ft" id="sqft" oninput="clearIfEmpty('sqft', 'yard','marla')">
+                <input type="text" placeholder="0 sq-yard" id="yard" oninput="clearIfEmpty('yard', 'sqft','marla')">
+                <input type="text" placeholder="0 marla" id="marla" oninput="clearIfEmpty('marla', 'sqft','yard')">
+            </div>
+            <div class="btn">
+                <button onclick="ConvertTosqft()">Convert to sq.ft</button>
+                <button onclick="ConvertToYard()">Convert to sq.yd</button>
+                <button onclick="ConvertToMarla()">Convert to marla</button>             
+                
+            </div>
+        </div>
+    </div>
+    <script src="./script.mjs"></script>
+</body>
+
+</html>
