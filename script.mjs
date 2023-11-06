@@ -1,49 +1,58 @@
-let sqftInput = document.getElementById("sqft");
-let yardInput = document.getElementById("yard");
-let marlaInput = document.getElementById("marla");
+let inputValue = document.getElementById("input");
+let outputValue = document.getElementById("output");
+let inputOption = document.getElementById("input_option");
+let outputOption = document.getElementById("output_option");
 
+function convert() {
 
-function ConvertTosqft() {
-    if (yardInput.value !== "") {
-        let sqftvalue = parseFloat(yardInput.value) * 9;
-        sqftInput.value=sqftvalue.toFixed(7);
+    const inputValueNumber = parseInt(inputValue.value);
 
-    } else if (marlaInput.value !== "") {
-       let sqftvalue = parseFloat(marlaInput.value) * 272.3;
-       sqftInput.value=sqftvalue.toFixed(7);
-    };
+    if (inputOption.value === outputOption.value) {
+        outputValue.value = inputValueNumber ;
+    } else if (inputOption.value === "Square Feet" && outputOption.value === "Square Yards") {
+        convertSqftToYard(inputValueNumber);
+    } else if (inputOption.value === "Square Feet" && outputOption.value === "Marla") {
+        convertSqftToMarla(inputValueNumber);
+    } else if (inputOption.value === "Square Yards" && outputOption.value === "Square Feet") {
+        convertSqydToFoot(inputValueNumber);
+    } else if (inputOption.value === "Square Yards" && outputOption.value === "Marla") {
+        convertSqydToMarla(inputValueNumber);
+    } else if (inputOption.value === "Marla" && outputOption.value === "Square Feet") {
+        convertMarlaToFoot(inputValueNumber);
+    } else if (inputOption.value === "Marla" && outputOption.value === "Square Yards") {
+        convertMarlaToYard(inputValueNumber);
+    }
 }
 
-function ConvertToMarla() {
-    if (sqftInputInput.value !== "") {
-       let marlvalue = parseFloat(sqftInput.value) / 272.3;
-       marlaInput.value=marlvalue.toFixed(7);
-
-    } else if (yardInput.value !== "") {
-        let marlvalue = parseFloat(sqftInput.value) / 30.25;
-        marlaInput.value=marlvalue.toFixed(7);
-    };
+function convertSqftToYard(value) {
+    outputValue.value = (value / 9).toFixed(5) ;
 }
 
-function ConvertToYard() {
-    if (sqftInput.value !== "") {
-        let yardvalue = parseFloat(sqftInput.value) / 9;
-        yardInput.value=yardvalue.toFixed(7);
-
-    } else if (marlaInput.value !== "") {
-        let yardvalue = parseFloat(marlaInput.value) * 30.25;
-        yardInput.value=yardvalue.toFixed(7);
-    };
+function convertSqftToMarla(value) {
+    outputValue.value = (value / 272.3).toFixed(5) ;
 }
 
+function convertSqydToFoot(value) {
+    outputValue.value = (value * 9).toFixed(5);
+}
 
-function clearIfEmpty(currentFieldId, otherFirstFieldId, otherSecondFieldId) {
-    var currentField = document.getElementById(currentFieldId);
-    var otherFirstField = document.getElementById(otherFirstFieldId);
-    var otherSecondField = document.getElementById(otherSecondFieldId);
+function convertSqydToMarla(value) {
+    outputValue.value = (value / 30.25).toFixed(5);
+}
 
-    if (currentField.value === "") {
-        otherFirstField.value = "";
-        otherSecondField.value = "";
+function convertMarlaToFoot(value) {
+    outputValue.value = (value * 272.3).toFixed(5) ;
+}
+
+function convertMarlaToYard(value) {
+    outputValue.value = (value * 30.25).toFixed(5) ;
+}
+
+function clearIfEmpty(firstvalue, secondvalue) {
+    var firstvalue = document.getElementById(firstvalue);
+    var secondvalue = document.getElementById(secondvalue);
+
+    if (firstvalue.value === "") {
+        secondvalue.value = "";
     }
 }

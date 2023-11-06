@@ -13,17 +13,25 @@
     <div class="container">
         <h1>Area Converter</h1>
         <div class="area-converter">
-            <div class="input">
-                <input type="text" placeholder="0 sq.ft" id="sqft" oninput="clearIfEmpty('sqft', 'yard','marla')">
-                <input type="text" placeholder="0 sq-yard" id="yard" oninput="clearIfEmpty('yard', 'sqft','marla')">
-                <input type="text" placeholder="0 marla" id="marla" oninput="clearIfEmpty('marla', 'sqft','yard')">
-            </div>
-            <div class="btn">
-                <button onclick="ConvertTosqft()">Convert to sq.ft</button>
-                <button onclick="ConvertToYard()">Convert to sq.yd</button>
-                <button onclick="ConvertToMarla()">Convert to marla</button>             
-                
-            </div>
+            <form action="">
+                <div class="input">
+                    <input type="number" required id="input"  onkeydown="if(event.key==='Enter'){convert();}" oninput="clearIfEmpty('input','output')">
+                    <select id="input_option">
+                        <option value="Square Feet">Square Feet</option>
+                        <option value="Square Yards">Square Yards</option>
+                        <option value="Marla">Marla</option>
+                    </select>
+                </div>
+                <div class="output">
+                    <input type="number" id="output" readonly oninput="clearIfEmpty('output','input')">
+                    <select id="output_option">
+                        <option value="Square Feet">Square Feet</option>
+                        <option value="Square Yards">Square Yards</option>
+                        <option value="Marla">Marla</option>
+                    </select>
+                </div>
+            </form>
+            <button onclick="convert()">Convert</button>
         </div>
     </div>
     <script src="./script.mjs"></script>
